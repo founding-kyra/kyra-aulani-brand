@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Kyra Aulani — component classes. Values copied from the Heartfelt Wellbeing audit page. */
+.ka { font-family: var(--font-body); color: var(--espresso); line-height: 1.7; }
+.ka *, .ka *::before, .ka *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.ka-dark { background: var(--espresso); color: var(--cream); }
+.ka-light { background: var(--white); color: var(--espresso); }
+
+/* Eyebrow */
+.ka-eyebrow { font-family: var(--font-body); font-weight: 700; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--moss); margin-bottom: 14px; }
+.ka-dark .ka-eyebrow { color: var(--olive); }
+
+/* Display headings */
+.ka-display { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.0; }
+.ka-display em { color: var(--rose); font-style: normal; }
+.ka-light .ka-display em { color: var(--olive); }
+.ka-script { font-family: var(--font-script); color: var(--rose); text-transform: none; letter-spacing: 0; line-height: 1.0; }
+
+/* Section rail */
+.ka-rail { display: grid; grid-template-columns: 380px 1fr; min-height: 280px; }
+.ka-rail-left { background: var(--espresso); padding: 48px 40px; position: relative; overflow: hidden; }
+.ka-ghost { position: absolute; top: -8px; left: 16px; font-family: var(--font-display); font-size: 140px; line-height: 1; color: rgba(239,234,224,0.06); pointer-events: none; user-select: none; }
+.ka-rail-title { font-family: var(--font-display); text-transform: uppercase; font-size: 24px; line-height: 1.08; color: var(--cream); margin-top: 72px; }
+.ka-rail-right { background: var(--white); padding: 48px 56px; }
+
+/* Glance card */
+.ka-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.ka-card { background: var(--white); border: 1px solid var(--gray); padding: 32px 28px; }
+.ka-card.olive-top { border-top: 3px solid var(--olive); }
+.ka-card.dark-top { border-top: 3px solid var(--espresso); }
+.ka-card-label { font-weight: 700; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--moss); margin-bottom: 12px; }
+.ka-card-value { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.01em; font-size: 24px; line-height: 1.15; color: var(--espresso); }
+
+/* Fix box */
+.ka-fix { background: var(--olive); padding: 28px 32px; }
+.ka-fix-label { font-weight: 700; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(57,13,3,0.6); margin-bottom: 10px; }
+.ka-fix p { font-weight: 700; font-size: 21px; line-height: 1.5; color: var(--espresso); }
+
+/* Status list */
+.ka-status { list-style: none; }
+.ka-status li { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--gray); font-size: 14px; }
+.ka-status li:last-child { border-bottom: none; }
+.ka-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+.ka-icon.check { background: var(--espresso); color: var(--cream); }
+.ka-icon.warn { background: var(--olive); color: var(--espresso); }
+.ka-status strong { display: block; font-size: 13px; color: var(--espresso); }
+.ka-status span.desc { font-size: 12px; line-height: 1.6; color: var(--text-muted); }
+
+/* Priority list */
+.ka-priority { display: grid; grid-template-columns: 80px 1fr; gap: 24px; padding: 32px 0; border-bottom: 1px solid var(--gray); align-items: start; }
+.ka-priority:last-child { border-bottom: none; }
+.ka-priority-num { font-family: var(--font-display); font-size: 76px; line-height: 1; color: rgba(57,13,3,0.13); text-align: right; }
+.ka-priority-title { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.01em; font-size: 26px; line-height: 1.15; margin-bottom: 10px; }
+.ka-priority-desc { font-size: 13px; line-height: 1.7; color: var(--text-muted); }
+
+/* Offer card */
+.ka-offer { border: 1px solid var(--gray); padding: 32px 28px; background: var(--white); }
+.ka-offer .ka-offer-num { font-family: var(--font-display); font-size: 34px; color: var(--olive); line-height: 1; margin-bottom: 8px; }
+.ka-offer .ka-offer-tier { font-weight: 700; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--moss); margin-bottom: 8px; }
+.ka-offer-name { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.01em; font-size: 20px; line-height: 1.15; margin-bottom: 12px; }
+.ka-offer p { font-size: 13px; line-height: 1.7; color: var(--text-muted); }
+
+/* Callout on dark */
+.ka-wash { background: var(--olive-wash); border-left: 3px solid var(--olive); padding: 16px 20px; color: var(--cream); font-size: 13px; line-height: 1.6; }
+
+/* Manual-input flag */
+.ka-flag { display: inline-block; font-weight: 700; font-size: 10px; background: rgba(139,134,53,0.14); border: 1px solid var(--olive); color: var(--moss); padding: 2px 7px; letter-spacing: 0.05em; }
+
+/* Closing / sign-off */
+.ka-closing { background: var(--espresso); padding: 48px 56px 24px; }
+.ka-closing-line { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; font-size: 40px; line-height: 1.1; color: var(--cream); margin-bottom: 12px; }
+.ka-closing-line.script { font-family: var(--font-script); text-transform: none; letter-spacing: 0; color: var(--rose); font-size: 160px; line-height: 0.9; margin-bottom: 16px; }
+.ka-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-top: 20px; margin-top: 24px; border-top: 1px solid var(--on-dark-hairline); font-size: 12px; color: var(--on-dark-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.ka-footer a { color: var(--rose); text-decoration: none; }
+.ka-footer .mark { display: flex; align-items: center; gap: 8px; }
+.ka-footer .mark img { width: 22px; height: 22px; }
+
+@media (max-width: 768px) {
+  .ka-rail, .ka-cards { grid-template-columns: 1fr; }
+  .ka-rail-right, .ka-closing, .ka-rail-left { padding: 32px 24px; }
+  .ka-priority { grid-template-columns: 48px 1fr; gap: 16px; }
+  .ka-priority-num { font-size: 48px; }
+  .ka-priority-title { font-size: 20px; }
+  .ka-closing-line { font-size: 28px; }
+  .ka-closing-line.script { font-size: 110px; }
+}

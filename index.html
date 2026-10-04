@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand Guidelines — Kyra Aulani</title>
+<link rel="icon" href="logos/butterfly-favicon-64.png">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--white); color: var(--espresso); font-size: 16px; line-height: 1.7; }
+  .wrap { padding: var(--section-pad) var(--gutter); }
+  .disp { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; line-height: 1.05; }
+  h2.disp { font-size: clamp(30px, 5vw, 56px); margin-bottom: 32px; }
+  h3.disp { font-size: clamp(18px, 2.2vw, 24px); margin-bottom: 12px; }
+  .eyebrow { font-weight: 700; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--moss); margin-bottom: 14px; }
+  .dark { background: var(--espresso); color: var(--cream); }
+  .dark .eyebrow { color: var(--olive); }
+  .muted { color: var(--text-muted); font-size: 14px; }
+  .dark .muted { color: var(--on-dark-muted); }
+
+  /* nav */
+  nav { position: sticky; top: 0; z-index: 5; background: var(--espresso); border-bottom: 1px solid var(--on-dark-hairline); display: flex; gap: 4px; overflow-x: auto; padding: 0 var(--gutter); }
+  nav a { color: var(--cream); text-decoration: none; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 14px 12px; white-space: nowrap; }
+  nav a:hover, nav a:focus-visible { color: var(--rose); outline: none; }
+
+  /* cover */
+  #cover { min-height: 78vh; display: flex; flex-direction: column; justify-content: center; border-bottom: var(--border-cover); }
+  #cover img { width: 72px; margin-bottom: 28px; }
+  #cover .name { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.03em; font-size: clamp(32px, 8vw, 88px); line-height: 1; color: var(--cream); overflow-wrap: anywhere; }
+  #cover .sig { font-family: var(--font-script); color: var(--rose); font-size: clamp(64px, 10vw, 120px); line-height: 1; margin: 8px 0 16px; }
+  #cover .meta { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-muted); }
+
+  /* rules */
+  .rules { list-style: none; counter-reset: r; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1px; background: var(--gray); border: var(--border-hairline); }
+  .rules li { counter-increment: r; background: var(--white); padding: 24px; display: grid; grid-template-columns: 48px 1fr; gap: 12px; align-items: start; font-size: 14px; }
+  .rules li::before { content: counter(r); font-family: var(--font-display); font-size: 40px; line-height: 1; color: rgba(57,13,3,0.18); }
+  .rules strong { display: block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
+
+  /* logos */
+  .logo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+  .logo-tile { border: var(--border-hairline); background: var(--white); }
+  .logo-tile .stage { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
+  .logo-tile .stage.on-dark { background: var(--espresso); }
+  .logo-tile .stage img { width: 45%; }
+  .logo-tile .stage .pending { font-family: var(--font-script); color: var(--rose); font-size: 56px; }
+  .logo-tile .cap { padding: 16px 20px; border-top: var(--border-hairline); font-size: 13px; }
+  .logo-tile .cap b { display: block; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; margin-top: 6px; }
+  .tag.ok { background: var(--espresso); color: var(--cream); }
+  .tag.wait { border: 1px solid var(--olive); color: var(--moss); }
+
+  /* colors */
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 48px; }
+  .sw { border: var(--border-hairline); background: var(--white); }
+  .sw .chip { height: 120px; }
+  .sw .info { padding: 12px 14px; font-size: 12px; line-height: 1.5; }
+  .sw .info b { display: block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+  .sw code { font-size: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: var(--border-hairline); vertical-align: middle; }
+  th { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--moss); }
+  .pair { display: inline-block; padding: 4px 12px; font-weight: 700; font-size: 13px; }
+  .pass { color: var(--espresso); font-weight: 700; }
+  .large { color: var(--moss); font-weight: 700; }
+  .fail { color: var(--espresso); font-weight: 700; text-decoration: line-through; }
+
+  /* type */
+  .spec { display: grid; grid-template-columns: 200px 1fr; gap: 24px; padding: 28px 0; border-bottom: var(--border-hairline); align-items: baseline; }
+  .spec:last-child { border-bottom: none; }
+  .spec .lbl b { display: block; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; }
+  .spec .lbl span { font-size: 12px; color: var(--text-muted); }
+
+  /* components */
+  .comp { margin-bottom: 48px; }
+  .comp > .eyebrow { margin-bottom: 12px; }
+  .comp-frame { border: var(--border-hairline); }
+
+  /* voice */
+  .voice { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .voice ul { list-style: none; }
+  .voice li { padding: 12px 0; border-bottom: 1px solid var(--on-dark-hairline); font-size: 15px; }
+  .donts li::before { content: "✕"; color: var(--rose); font-weight: 700; margin-right: 10px; }
+  .dos li::before { content: "✓"; color: var(--olive); font-weight: 700; margin-right: 10px; }
+
+  footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 24px var(--gutter); border-top: 1px solid var(--on-dark-hairline); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--on-dark-muted); }
+  footer a { color: var(--rose); text-decoration: none; }
+  footer .mark { display: flex; align-items: center; gap: 8px; }
+  footer img { width: 22px; height: 22px; }
+
+  @media (max-width: 768px) {
+    .spec, .voice { grid-template-columns: 1fr; gap: 8px; }
+    .voice { gap: 32px; }
+    .ka-rail { grid-template-columns: 1fr; }
+    .ka-cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Sections">
+  <a href="#rules">Rules</a><a href="#logos">Logos</a><a href="#color">Color</a><a href="#type">Type</a><a href="#components">Components</a><a href="#voice">Voice</a>
+</nav>
+
+<!-- 01 COVER -->
+<header id="cover" class="dark wrap">
+  <img src="logos/butterfly-mark.png" alt="Kyra Aulani butterfly logo">
+  <p class="eyebrow">Brand Guidelines · v1 · October 2026</p>
+  <h1 class="name">Brand Architect<br>for Visionaries</h1>
+  <p class="sig">Kyra Aulani</p>
+  <p class="meta">Elegant · Intimate · Signature-driven</p>
+</header>
+
+<!-- 02 RULES -->
+<section id="rules" class="wrap">
+  <p class="eyebrow">Start here</p>
+  <h2 class="disp">Seven rules</h2>
+  <ol class="rules">
+    <li><span><strong>Two grounds</strong>White #f5f3ef or espresso #390d03. Alternate in full-bleed sections. Never pure white or black.</span></li>
+    <li><span><strong>Headlines</strong>High Cruiser, always uppercase. Never body or long passages.</span></li>
+    <li><span><strong>Body</strong>Atkinson Hyperlegible for all running text, labels and eyebrows.</span></li>
+    <li><span><strong>Script</strong>Quick Signature only for "Kyra Aulani", "xoxo", or one closing line.</span></li>
+    <li><span><strong>Accent</strong>Olive is the signature accent. Rose is emphasis on dark.</span></li>
+    <li><span><strong>Square</strong>No rounded corners, shadows or gradients.</span></li>
+    <li><span><strong>Contrast</strong>Every text pair passes WCAG AA. Check the table below.</span></li>
+  </ol>
+</section>
+
+<!-- 03 LOGOS -->
+<section id="logos" class="wrap" style="background:var(--cream)">
+  <p class="eyebrow">Marks</p>
+  <h2 class="disp">Logos</h2>
+  <div class="logo-grid">
+    <div class="logo-tile"><div class="stage on-dark"><img src="logos/butterfly-mark.png" alt="Butterfly mark on espresso"></div><div class="cap"><b>Butterfly mark</b>Cover at 72px, footers at 20–22px, favicon.<br><span class="tag ok">File ready</span></div></div>
+    <div class="logo-tile"><div class="stage"><img src="logos/butterfly-mark.png" alt="Butterfly mark on white"></div><div class="cap"><b>Butterfly on light</b>Same file on white.<br><span class="tag ok">File ready</span></div></div>
+    <div class="logo-tile"><div class="stage on-dark"><span class="pending">Kyra Aulani</span></div><div class="cap"><b>Signature wordmark</b>Typeset stand-in until the file arrives.<br><span class="tag wait">File pending</span></div></div>
+    <div class="logo-tile"><div class="stage"><span class="muted">KA</span></div><div class="cap"><b>KA monogram</b>Circular mark.<br><span class="tag wait">File pending</span></div></div>
+    <div class="logo-tile"><div class="stage"><span class="muted" style="letter-spacing:.2em;text-transform:uppercase;font-size:11px">Brand Architect for Visionaries</span></div><div class="cap"><b>Tagline lockup</b><span class="tag wait">File pending</span></div></div>
+  </div>
+  <p class="muted" style="margin-top:24px">Never redraw or approximate a pending mark. Use the butterfly, or set the name in Quick Signature.</p>
+</section>
+
+<!-- 04 COLOR -->
+<section id="color" class="wrap">
+  <p class="eyebrow">Palette</p>
+  <h2 class="disp">Color</h2>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:var(--espresso)"></div><div class="info"><b>Espresso</b><code>#390d03</code><br>Primary ink · dark ground</div></div>
+    <div class="sw"><div class="chip" style="background:var(--moss)"></div><div class="info"><b>Moss</b><code>#514619</code><br>Secondary ink · urgent band</div></div>
+    <div class="sw"><div class="chip" style="background:var(--olive)"></div><div class="info"><b>Olive</b><code>#8b8635</code><br>Signature accent</div></div>
+    <div class="sw"><div class="chip" style="background:var(--rose)"></div><div class="info"><b>Rose</b><code>#bc7e78</code><br>Script · emphasis on dark</div></div>
+    <div class="sw"><div class="chip" style="background:var(--orange)"></div><div class="info"><b>Orange</b><code>#d4521e</code><br>Reserved signal</div></div>
+    <div class="sw"><div class="chip" style="background:var(--cream)"></div><div class="info"><b>Cream</b><code>#efeae0</code><br>Text on dark · light panel</div></div>
+    <div class="sw"><div class="chip" style="background:var(--gray)"></div><div class="info"><b>Gray</b><code>#e3ded8</code><br>Hairlines</div></div>
+    <div class="sw"><div class="chip" style="background:var(--white);border-bottom:var(--border-hairline)"></div><div class="info"><b>White</b><code>#f5f3ef</code><br>Page ground</div></div>
+  </div>
+
+  <h3 class="disp">Approved text pairs</h3>
+  <table>
+    <thead><tr><th>Sample</th><th>Ratio</th><th>Allowed for</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pair" style="background:var(--white);color:var(--espresso);border:var(--border-hairline)">Espresso on white</span></td><td>15.4</td><td class="pass">All text</td></tr>
+      <tr><td><span class="pair" style="background:var(--espresso);color:var(--cream)">Cream on espresso</span></td><td>14.2</td><td class="pass">All text</td></tr>
+      <tr><td><span class="pair" style="background:var(--white);color:var(--moss);border:var(--border-hairline)">Moss on white</span></td><td>8.5</td><td class="pass">All text</td></tr>
+      <tr><td><span class="pair" style="background:var(--moss);color:var(--cream)">Cream on moss</span></td><td>7.8</td><td class="pass">All text</td></tr>
+      <tr><td><span class="pair" style="background:var(--white);color:var(--text-muted);border:var(--border-hairline)">Muted #665a4d on white</span></td><td>6.0</td><td class="pass">All text</td></tr>
+      <tr><td><span class="pair" style="background:var(--espresso);color:var(--rose)">Rose on espresso</span></td><td>5.2</td><td class="pass">All text</td></tr>
+      <tr><td><span class="pair" style="background:var(--espresso);color:var(--olive)">Olive on espresso</span></td><td>4.5</td><td class="pass">All text (at the limit)</td></tr>
+      <tr><td><span class="pair" style="background:var(--olive);color:var(--espresso)">Espresso on olive</span></td><td>4.5</td><td class="pass">All text (at the limit)</td></tr>
+      <tr><td><span class="pair" style="background:var(--espresso);color:var(--orange)">Orange on espresso</span></td><td>4.1</td><td class="large">24px+ only</td></tr>
+      <tr><td><span class="pair" style="background:var(--white);color:var(--olive);border:var(--border-hairline)">Olive on white</span></td><td>3.4</td><td class="large">24px+ only</td></tr>
+      <tr><td><span class="pair" style="background:var(--white);color:var(--rose);border:var(--border-hairline)">Rose on white</span></td><td>3.0</td><td class="fail">Never</td></tr>
+      <tr><td><span class="pair" style="background:var(--espresso);color:var(--moss)">Moss on espresso</span></td><td>1.8</td><td class="fail">Never</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 05 TYPE -->
+<section id="type" class="wrap" style="background:var(--cream)">
+  <p class="eyebrow">Typography</p>
+  <h2 class="disp">Type</h2>
+  <div class="spec"><div class="lbl"><b>Display</b><span>High Cruiser · uppercase · 46–88px</span></div><div class="disp" style="font-size:clamp(36px,6vw,72px)">Name the outcome</div></div>
+  <div class="spec"><div class="lbl"><b>Heading</b><span>High Cruiser · 18–42px</span></div><div class="disp" style="font-size:clamp(20px,3vw,32px)">Brand Foundation</div></div>
+  <div class="spec"><div class="lbl"><b>Eyebrow</b><span>Atkinson Bold · 10–11px · 0.2em</span></div><div class="eyebrow" style="margin:0">Brand Architecture Audit</div></div>
+  <div class="spec"><div class="lbl"><b>Body</b><span>Atkinson Hyperlegible · 16px / 1.7</span></div><p style="max-width:60ch">Direct, no fluff. Short declaratives that name the thing, then one line that softens it.</p></div>
+  <div class="spec"><div class="lbl"><b>Fix-box line</b><span>Atkinson Bold · 16–21px</span></div><p style="font-weight:700;font-size:21px;line-height:1.5">The one line to use.</p></div>
+  <div class="spec"><div class="lbl"><b>Script</b><span>Quick Signature · name, xoxo, one closing line</span></div><p style="font-family:var(--font-script);font-size:clamp(96px,14vw,180px);line-height:1;color:var(--espresso)">xoxo</p></div>
+</section>
+
+<!-- 06 COMPONENTS -->
+<section id="components" class="wrap ka">
+  <p class="eyebrow">Building blocks</p>
+  <h2 class="disp">Components</h2>
+
+  <div class="comp"><p class="eyebrow">Section rail</p><div class="comp-frame">
+    <section class="ka-rail">
+      <div class="ka-rail-left ka-dark"><span class="ka-ghost">01</span><p class="ka-eyebrow">Brand Foundation</p><h3 class="ka-rail-title">Positioning / Clarity</h3></div>
+      <div class="ka-rail-right"><p class="ka-eyebrow">Content column</p><p style="font-size:14px">Findings and recommendations go here.</p></div>
+    </section></div></div>
+
+  <div class="comp"><p class="eyebrow">Glance cards</p>
+    <div class="ka-cards">
+      <div class="ka-card olive-top"><p class="ka-card-label">Label</p><p class="ka-card-value">Short value</p></div>
+      <div class="ka-card dark-top"><p class="ka-card-label">Label</p><p class="ka-card-value">Short value</p></div>
+      <div class="ka-card"><p class="ka-card-label">Label</p><p class="ka-card-value">Short value</p></div>
+    </div></div>
+
+  <div class="comp"><p class="eyebrow">Fix box</p>
+    <div class="ka-fix"><p class="ka-fix-label">Use this</p><p>The one recommended line, bold.</p></div></div>
+
+  <div class="comp"><p class="eyebrow">Status list</p><div class="comp-frame" style="padding:0 24px">
+    <ul class="ka-status">
+      <li><span class="ka-icon check">✓</span><span><strong>Working</strong><span class="desc">What's solid, in one line.</span></span></li>
+      <li><span class="ka-icon warn">!</span><span><strong>Gap</strong><span class="desc">What needs building, in one line.</span></span></li>
+    </ul></div></div>
+
+  <div class="comp"><p class="eyebrow">Priority list</p><div class="comp-frame" style="padding:0 24px">
+    <div class="ka-priority"><div class="ka-priority-num">1</div><div><h3 class="ka-priority-title">First action</h3><p class="ka-priority-desc">One or two sentences.</p></div></div>
+    <div class="ka-priority"><div class="ka-priority-num">2</div><div><h3 class="ka-priority-title">Second action</h3><p class="ka-priority-desc">One or two sentences.</p></div></div>
+  </div></div>
+
+  <div class="comp"><p class="eyebrow">Offer cards</p>
+    <div class="ka-cards">
+      <div class="ka-offer"><p class="ka-offer-num">1</p><p class="ka-offer-tier">Clarify</p><h3 class="ka-offer-name">Direction Intensive</h3><p>Copy from the offer suite.</p></div>
+      <div class="ka-offer"><p class="ka-offer-num">2</p><p class="ka-offer-tier">Build</p><h3 class="ka-offer-name">Brand Launch Build</h3><p>Copy from the offer suite.</p></div>
+      <div class="ka-offer"><p class="ka-offer-num">3</p><p class="ka-offer-tier">Partner</p><h3 class="ka-offer-name">Creative Partnership</h3><p>Copy from the offer suite.</p></div>
+    </div></div>
+
+  <div class="comp"><p class="eyebrow">Sign-off</p>
+    <div class="ka-closing ka-dark">
+      <p class="ka-closing-line">Name the outcome. Show the proof.</p>
+      <p class="ka-closing-line script">xoxo</p>
+      <div class="ka-footer"><a href="https://kyraaulani.art">Let's Work Together</a><span>Document name</span><span class="mark"><img src="logos/butterfly-favicon-64.png" alt="">kyraaulani.art</span></div>
+    </div></div>
+</section>
+
+<!-- 07 VOICE -->
+<section id="voice" class="dark wrap">
+  <p class="eyebrow">How it sounds</p>
+  <h2 class="disp" style="color:var(--cream)">Voice: <em style="color:var(--rose);font-style:normal">gritty-elegant</em></h2>
+  <div class="voice">
+    <div><h3 class="eyebrow">Do</h3><ul class="dos">
+      <li>Earthy and gritty as undercurrent, not headline</li>
+      <li>More elegant, more selective</li>
+      <li>Sharper sentences, direct, no fluff</li>
+      <li>Speak to established, discerning clients</li>
+      <li>Flag missing data: ⚑ NEEDS MANUAL INPUT</li>
+    </ul></div>
+    <div><h3 class="eyebrow">Don't</h3><ul class="donts">
+      <li>Casual filler</li>
+      <li>Invented claims, prices or testimonials</li>
+      <li>Rounded corners, shadows, gradients, emoji</li>
+      <li>Script anywhere but the name, xoxo, one closing line</li>
+      <li>Retired Founding Mothers palette or fonts</li>
+    </ul></div>
+  </div>
+</section>
+
+<footer class="dark">
+  <a href="https://kyraaulani.art">kyraaulani.art</a>
+  <span>Kyra Aulani — Brand Guidelines</span>
+  <span class="mark"><img src="logos/butterfly-favicon-64.png" alt="">@kyraaulani</span>
+</footer>
+
+</body>
+</html>

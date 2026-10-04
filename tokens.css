@@ -1,0 +1,38 @@
+/* Kyra Aulani — brand tokens. Source of truth: tokens.json. */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* Self-hosted faces: add the licensed files to /fonts (see fonts/README.md). */
+@font-face { font-family: 'High Cruiser'; src: url('fonts/HighCruiser.otf') format('opentype'); font-display: swap; }
+@font-face { font-family: 'Quick Signature'; src: url('fonts/QuickSignature.otf') format('opentype'); font-display: swap; }
+
+:root {
+  --espresso: #390d03;
+  --moss: #514619;
+  --olive: #8b8635;
+  --orange: #d4521e;
+  --rose: #bc7e78;
+  --cream: #efeae0;
+  --gray: #e3ded8;
+  --white: #f5f3ef;
+  --text-muted: #665a4d;
+  --on-dark-muted: rgba(239,234,224,0.6);
+  --on-dark-hairline: rgba(239,234,224,0.12);
+  --olive-wash: rgba(139,134,53,0.18);
+
+  --font-display: 'High Cruiser', 'Archivo', system-ui, sans-serif;
+  --font-script: 'Quick Signature', 'Brush Script MT', cursive;
+  --font-body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  /* aliases used by the audit page */
+  --display: var(--font-display);
+  --script: var(--font-script);
+  --body: var(--font-body);
+
+  --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 32px;
+  --space-5: 48px; --space-6: 80px; --space-7: 104px;
+  --gutter: clamp(32px, 6vw, 80px);
+  --section-pad: clamp(64px, 8vw, 104px);
+
+  --radius-none: 0; --radius-round: 50%;
+  --border-hairline: 1px solid #e3ded8;
+  --border-accent: 3px solid #8b8635;
+  --border-cover: 4px solid #8b8635;
+}
